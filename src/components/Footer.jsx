@@ -112,7 +112,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="hidden md:flex flex-col items-center space-y-4 md:col-span-12">
+        <div className=" hidden md:flex flex-col items-center space-y-4 md:col-span-12">
           <div className="bg-black text-white p-3 rounded-full">
             <BsBalloonHeartFill className="w-7 h-auto"></BsBalloonHeartFill>
           </div>
