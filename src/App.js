@@ -10,7 +10,6 @@ function App() {
         <Routes>
           <Route index path="/" element={<HomePage></HomePage>}></Route>
           <Route
-            index
             path="/blog/:id"
             element={<ArticleDetail></ArticleDetail>}
           ></Route>
