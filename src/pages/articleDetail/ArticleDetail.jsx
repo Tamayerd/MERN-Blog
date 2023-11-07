@@ -5,6 +5,7 @@ import { images } from "../../constants";
 import { Link } from "react-router-dom";
 import SuggestedPost from "./container/SuggestedPost";
 import CommentsContainer from "../../components/comments/CommentsContainer";
+import SocialShareButtons from "../../components/SocialShareButtons";
 
 const BreadCrumbsData = [
   {
@@ -94,13 +95,31 @@ const ArticleDetail = () => {
               voluptatem quibusdam! Nam hic inventore porro?
             </p>
           </div>
-          <CommentsContainer className="mt-10" logginedUserId="a"></CommentsContainer>
-          <SuggestedPost
-            header="Latest Article"
-            posts={postData}
-            tags={tagsData}
-            className="mt-8 lg:mt-0 lg:max-w-xs"
-          ></SuggestedPost>
+          <CommentsContainer
+            className="mt-10"
+            logginedUserId="a"
+          ></CommentsContainer>
+          <div>
+            <SuggestedPost
+              header="Latest Article"
+              posts={postData}
+              tags={tagsData}
+              className="mt-8 lg:mt-0 lg:max-w-xs"
+            ></SuggestedPost>
+            <div className="mt-7">
+              <h2 className="font-roboto font-medium tex-dark-hard mb-4 md:text-xl">
+                Share on:
+              </h2>
+              <SocialShareButtons
+                url={encodeURI(
+                  "https://tr.wix.com/blog/makale/en-iyi-blog-siteleri"
+                )}
+                title={encodeURIComponent(
+                  "İlham Veren 9 Blog Örneği ( tasarım ipuçları ile beraber)"
+                )}
+              ></SocialShareButtons>
+            </div>
+          </div>
         </article>
       </section>
     </MainLayout>
