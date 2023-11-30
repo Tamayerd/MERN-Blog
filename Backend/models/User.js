@@ -17,20 +17,21 @@ const UserSchema = new Schema(
 
 UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
-    this.password = bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
     return next();
   }
   return next();
 });
 
 UserSchema.methods.generateJWT = async function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+  return await jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };
 
 UserSchema.methods.comparePassword = async function (enteredPassword) {
-  return bcrypt.compare(enteredPassword, this.password);
+
+  return await bcrypt.compare(enteredPassword, this.password);
 }
 
 const User = model("User", UserSchema);

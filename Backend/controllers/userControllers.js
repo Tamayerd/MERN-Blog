@@ -1,3 +1,4 @@
+import { isValidObjectId } from "mongoose";
 import { uploadPicture } from "../middleware/uploadPictureMiddleware.js";
 import User from "../models/User.js";
 import { fileRemover } from "../utils/fileRemover.js";
@@ -38,12 +39,15 @@ const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
 
     let user = await User.findOne({ email });
-
+    console.log(user)
     if (!user) {
       throw new Error("Email not found");
     }
 
-    if (await user.comparePassword(password)) {
+    const isPasswordValid = await String(user.comparePassword(password));
+  
+console.log(typeof isPasswordValid)
+    if (isPasswordValid) {
       return res.status(201).json({
         _id: user._id,
         avatar: user.avatar,
@@ -60,6 +64,7 @@ const loginUser = async (req, res, next) => {
     next(error);
   }
 };
+
 
 const userProfile = async (req, res, next) => {
   try {

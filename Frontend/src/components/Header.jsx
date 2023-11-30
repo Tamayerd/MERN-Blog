@@ -75,6 +75,7 @@ const Header = () => {
   const [navIsVisible, setNavIsVisible] = useState(false);
   const userState = useSelector((state) => state.user);
   const [profileDropdown, setProfileDropdown] = useState(false);
+  
   const navVisibilityHandler = () => {
     setNavIsVisible((curState) => {
       return !curState;
@@ -121,7 +122,7 @@ const Header = () => {
                     className=" flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-blue-400 px-5 py-2 rounded-full text-blue-400 font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300"
                     onClick={() => setProfileDropdown(!profileDropdown)}
                   >
-                    <span>Profile</span>
+                    <span>Account</span>
                     <MdOutlineKeyboardArrowDown></MdOutlineKeyboardArrowDown>
                   </button>
 
@@ -135,7 +136,7 @@ const Header = () => {
                         type="button"
                         className="hover:bg-dark-hard hover:text-white px-4 py-2 texy-white lg:text-dark-soft"
                       >
-                        Dashboard
+                        Profile Page
                       </button>
                       <button
                         type="button"
